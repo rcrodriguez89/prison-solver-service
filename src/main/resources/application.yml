@@ -1,0 +1,25 @@
+server:
+  servlet:
+    context-path: '/api/${API_VERSION:v1}'
+  error:
+    whitelabel:
+      enabled: false
+spring:
+  datasource:
+    url: 'jdbc:h2:mem:prison-challenge-db'
+    username: '${SUPER_USER_DB:sa}'
+    password: '${SUPER_USER_PASSWORD_DB:sa}'
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+    properties:
+      hibernate.integrator_provider: ni.com.prisonsolver.support.hibernate.ClassImportIntegratorProvider
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+  h2:
+    console:
+      enabled: true

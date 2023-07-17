@@ -1,0 +1,24 @@
+package ni.com.prisonsolver.support.annotation;
+
+public enum BeanValidationMessagesKeys {
+
+  PRISON_PARAM_IS_NULL,
+  PRISON_DIFFERENT_COLUMNS_SIZE,
+  PRISON_EXISTS_EMPTY_ROW,
+  PRISON_MIN_COLUMNS_ALLOWED,
+  PRISON_MAX_COLUMNS_ALLOWED,
+  PRISON_INVALID_CHARACTERS,
+  PRISON_INVALID_EXIT,
+  PRISON_INVALID_WALLS,
+  PRISONER_IS_ABSENT,
+  PRISONER_IS_MANY_TIMES,
+  EXIT_IS_ABSENT,
+  EXIT_IS_MANY_TIMES,
+  PRISON_MIN_ROWS_ALLOWED,
+  PRISON_MAX_ROWS_ALLOWED;
+
+  @Override
+  public String toString() {
+    return String.format("{%s}", super.name());
+  }
+}
