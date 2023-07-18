@@ -6,6 +6,7 @@ import ni.com.prisonsolver.persistence.ChallengeStats;
 import ni.com.prisonsolver.persistence.PrisonChallenge;
 import ni.com.prisonsolver.service.PrisonSolverService;
 import ni.com.prisonsolver.support.exception.NotFoundException;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -37,13 +38,15 @@ public class PrisonRestResource {
   }
 
   @PostMapping
-  public ResponseEntity<PrisonChallenge> prison(@Validated @NotNull @RequestBody PrisonDtoRequest prisonDtoRequest) {
+  public ResponseEntity<?> prison(@Validated @NotNull @RequestBody PrisonDtoRequest prisonDtoRequest) {
     var newEntity = this.service.solve(prisonDtoRequest);
     var location = ServletUriComponentsBuilder
       .fromCurrentRequest()
       .path("/{id}")
       .buildAndExpand(newEntity.getId())
       .toUri();
-    return ResponseEntity.created(location).build();
+    HttpHeaders headers = new HttpHeaders();
+    headers.setLocation(location);
+    return new ResponseEntity<>(headers, newEntity.isCanEscape() ? HttpStatus.OK : HttpStatus.FORBIDDEN);
   }
 }

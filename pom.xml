@@ -13,8 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>prison-solver-service</name>
     <description>
-		This application finds the exit route given the configuration of a challenge and
-		a starting position of the subject
+		This application finds the exit route given the configuration of a challenge and a starting position of the subject
     </description>
     <properties>
         <java.version>17</java.version>

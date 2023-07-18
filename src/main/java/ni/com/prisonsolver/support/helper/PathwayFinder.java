@@ -26,15 +26,15 @@ public class PathwayFinder {
     requireNonNull(challenge, "Challenge instance must not be null");
     requireNonNull(challenge.getSolutionMap(), "Solution Map instance must not be null");
 
-    LOG.info("PRISON MAP -->\n{}", challenge.drawPrisonMap());
-    computeGuardsViewRange(challenge);
-    LOG.info("GUARD VIEW RANGE MAP -->\n{}", challenge.drawSolutionMap());
+    LOG.info("PRISON MAP --> {}", challenge.drawPrisonMap());
+    this.computeGuardsViewRange(challenge);
+    LOG.info("GUARD VIEW RANGE MAP --> {}", challenge.drawSolutionMap());
 
     List<Location> pathway = new ArrayList<>();
     boolean canEscape = this.canEscape(challenge.getSolutionMap(), challenge.getPrisonerLocation(),
       challenge.getRows(), challenge.getColumns(), pathway);
-    drawPathwayOnSolutionMap(challenge, pathway);
-    LOG.info("SOLUTION MAP -->\n{}", challenge.drawSolutionMap());
+    this.drawPathwayOnSolutionMap(challenge, pathway);
+    LOG.info("SOLUTION MAP --> {}", challenge.drawSolutionMap());
     return canEscape;
   }
 
