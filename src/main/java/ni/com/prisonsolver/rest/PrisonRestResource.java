@@ -45,7 +45,7 @@ public class PrisonRestResource {
       .path("/{id}")
       .buildAndExpand(newEntity.getId())
       .toUri();
-    HttpHeaders headers = new HttpHeaders();
+    var headers = new HttpHeaders();
     headers.setLocation(location);
     return new ResponseEntity<>(headers, newEntity.isCanEscape() ? HttpStatus.OK : HttpStatus.FORBIDDEN);
   }
